@@ -1,1 +1,159 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kişisel Portfolyo | Geleceğin Tasarımı</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --accent-color: #38bdf8;
+            --text-main: #f1f5f9;
+            --text-dim: #94a3b8;
+            --card-bg: #1e293b;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid var(--accent-color);
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+
+        h1 { font-size: 3rem; margin-bottom: 10px; }
+        h1 span { color: var(--accent-color); }
+        p.subtitle { color: var(--text-dim); font-size: 1.2rem; margin-bottom: 30px; }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        section { margin-bottom: 80px; }
+        h2 { border-left: 4px solid var(--accent-color); padding-left: 15px; margin-bottom: 30px; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
+        }
+
+        .skills span {
+            display: inline-block;
+            background: #334155;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 0.9rem;
+        }
+
+        .contact-links a {
+            color: var(--text-main);
+            font-size: 1.5rem;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        .contact-links a:hover { color: var(--accent-color); }
+
+        footer { text-align: center; padding: 40px; color: var(--text-dim); font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="profile-img" style="background: #334155; display: flex; align-items: center; justify-content: center;">
+            <i class="fas fa-user-astronaut fa-4x"></i>
+        </div>
+        <h1>Merhaba, Ben <span>Kullanıcı</span></h1>
+        <p class="subtitle">AI Meraklısı | Problem Çözücü | Geleceği İnşa Eden</p>
+        <div class="contact-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="about">
+            <h2>Hakkımda</h2>
+            <p>Seninle yaptığımız sohbetlerden yola çıkarak; karmaşık yapıları basitleştirmeyi seven, yenilikçi araçlara (AI gibi) hızlıca adapte olan ve her zaman bir adım sonrasını düşünen bir vizyona sahip olduğunu biliyorum. Bu portfolyo, senin bu dinamik yapını temsil ediyor.</p>
+        </section>
+
+        <section id="projects">
+            <h2>Öne Çıkan Projeler</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>AI Entegrasyonları</h3>
+                    <p>Yapay zeka modellerini günlük iş akışlarına dahil ederek verimliliği %40 artıran çözümler.</p>
+                </div>
+                <div class="card">
+                    <h3>Web Otomasyonu</h3>
+                    <p>Tekrarlayan görevleri ortadan kaldıran akıllı scriptler ve modern arayüzler.</p>
+                </div>
+                <div class="card">
+                    <h3>Veri Görselleştirme</h3>
+                    <p>Karmaşık verileri herkesin anlayabileceği şık dashboardlara dönüştürme işleri.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Yetenekler</h2>
+            <div class="skills">
+                <span>HTML5 / CSS3</span>
+                <span>JavaScript</span>
+                <span>Prompt Engineering</span>
+                <span>Problem Solving</span>
+                <span>AI Tool Mastery</span>
+                <span>Creative Thinking</span>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 | Tüm Hakları Saklıdır. Gemini ile tasarlandı.</p>
+    </footer>
+
+</body>
+</html>
