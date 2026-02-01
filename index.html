@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kişisel Portfolyo | Geleceğin Tasarımı</title>
+    <title>Portfolyo | Etkileşimli Tasarım</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         :root {
             --bg-color: #0f172a;
@@ -14,17 +15,14 @@
             --card-bg: #1e293b;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+        html { scroll-behavior: smooth; } /* Yumuşak kaydırma */
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
-            line-height: 1.6;
+            overflow-x: hidden;
         }
 
         header {
@@ -37,123 +35,135 @@
             background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
         }
 
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 3px solid var(--accent-color);
-            margin-bottom: 20px;
-            object-fit: cover;
-        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 80px 20px; }
 
-        h1 { font-size: 3rem; margin-bottom: 10px; }
-        h1 span { color: var(--accent-color); }
-        p.subtitle { color: var(--text-dim); font-size: 1.2rem; margin-bottom: 30px; }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 50px 20px;
-        }
-
-        section { margin-bottom: 80px; }
-        h2 { border-left: 4px solid var(--accent-color); padding-left: 15px; margin-bottom: 30px; }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
+        /* Kartlar ve Animasyon */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
         .card {
             background: var(--card-bg);
-            padding: 25px;
-            border-radius: 12px;
-            transition: transform 0.3s ease;
-            border: 1px solid transparent;
+            padding: 30px;
+            border-radius: 15px;
+            cursor: pointer;
+            border: 1px solid rgba(56, 189, 248, 0.1);
+            transition: all 0.3s ease;
         }
 
         .card:hover {
             transform: translateY(-10px);
             border-color: var(--accent-color);
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.1);
         }
 
-        .skills span {
-            display: inline-block;
-            background: #334155;
-            padding: 5px 15px;
+        /* Modal Stilleri */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0; top: 0; 
+            width: 100%; height: 100%; 
+            background-color: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(5px);
+            align-items: center; justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            padding: 40px;
             border-radius: 20px;
-            margin: 5px;
-            font-size: 0.9rem;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            border: 1px solid var(--accent-color);
+            animation: modalFade 0.4s ease;
         }
 
-        .contact-links a {
-            color: var(--text-main);
-            font-size: 1.5rem;
-            margin: 0 15px;
-            transition: color 0.3s;
+        @keyframes modalFade {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
 
-        .contact-links a:hover { color: var(--accent-color); }
+        .close-btn {
+            position: absolute;
+            top: 20px; right: 20px;
+            font-size: 25px;
+            cursor: pointer;
+            color: var(--text-dim);
+        }
 
-        footer { text-align: center; padding: 40px; color: var(--text-dim); font-size: 0.8rem; }
+        .close-btn:hover { color: var(--accent-color); }
+
+        h2 { font-size: 2.5rem; margin-bottom: 40px; border-left: 5px solid var(--accent-color); padding-left: 20px; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="profile-img" style="background: #334155; display: flex; align-items: center; justify-content: center;">
-            <i class="fas fa-user-astronaut fa-4x"></i>
-        </div>
-        <h1>Merhaba, Ben <span>Kullanıcı</span></h1>
-        <p class="subtitle">AI Meraklısı | Problem Çözücü | Geleceği İnşa Eden</p>
-        <div class="contact-links">
-            <a href="#"><i class="fab fa-github"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fas fa-envelope"></i></a>
+        <div data-aos="fade-down" data-aos-duration="1000">
+            <h1 style="font-size: 4rem;">Geleceği <span>Kodla</span></h1>
+            <p style="color: var(--text-dim); font-size: 1.5rem; margin: 20px 0;">Yaratıcı Çözümler, Akıllı Sistemler</p>
+            <a href="#projects" style="color: var(--accent-color); text-decoration: none; border: 1px solid var(--accent-color); padding: 10px 25px; border-radius: 25px;">Projeleri Gör</a>
         </div>
     </header>
 
-    <div class="container">
-        <section id="about">
-            <h2>Hakkımda</h2>
-            <p>Seninle yaptığımız sohbetlerden yola çıkarak; karmaşık yapıları basitleştirmeyi seven, yenilikçi araçlara (AI gibi) hızlıca adapte olan ve her zaman bir adım sonrasını düşünen bir vizyona sahip olduğunu biliyorum. Bu portfolyo, senin bu dinamik yapını temsil ediyor.</p>
-        </section>
-
-        <section id="projects">
-            <h2>Öne Çıkan Projeler</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>AI Entegrasyonları</h3>
-                    <p>Yapay zeka modellerini günlük iş akışlarına dahil ederek verimliliği %40 artıran çözümler.</p>
-                </div>
-                <div class="card">
-                    <h3>Web Otomasyonu</h3>
-                    <p>Tekrarlayan görevleri ortadan kaldıran akıllı scriptler ve modern arayüzler.</p>
-                </div>
-                <div class="card">
-                    <h3>Veri Görselleştirme</h3>
-                    <p>Karmaşık verileri herkesin anlayabileceği şık dashboardlara dönüştürme işleri.</p>
-                </div>
+    <div class="container" id="projects">
+        <h2 data-aos="fade-right">Projelerim</h2>
+        <div class="grid">
+            <div class="card" data-aos="fade-up" onclick="openModal('modal1')">
+                <i class="fas fa-brain fa-2x" style="color: var(--accent-color);"></i>
+                <h3 style="margin-top: 15px;">AI Strateji Geliştirme</h3>
+                <p style="color: var(--text-dim);">Yapay zekanın iş süreçlerine entegrasyonu üzerine bir çalışma...</p>
+                <small style="color: var(--accent-color);">Detay için tıkla →</small>
             </div>
-        </section>
 
-        <section id="skills">
-            <h2>Yetenekler</h2>
-            <div class="skills">
-                <span>HTML5 / CSS3</span>
-                <span>JavaScript</span>
-                <span>Prompt Engineering</span>
-                <span>Problem Solving</span>
-                <span>AI Tool Mastery</span>
-                <span>Creative Thinking</span>
+            <div class="card" data-aos="fade-up" data-aos-delay="100" onclick="openModal('modal2')">
+                <i class="fas fa-code fa-2x" style="color: var(--accent-color);"></i>
+                <h3 style="margin-top: 15px;">Modern Arayüz Tasarımı</h3>
+                <p style="color: var(--text-dim);">Kullanıcı deneyimini ön plana çıkaran minimalist web projeleri...</p>
+                <small style="color: var(--accent-color);">Detay için tıkla →</small>
             </div>
-        </section>
+        </div>
     </div>
 
-    <footer>
-        <p>&copy; 2026 | Tüm Hakları Saklıdır. Gemini ile tasarlandı.</p>
-    </footer>
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal1')">&times;</span>
+            <h3 style="color: var(--accent-color);">AI Strateji Detayları</h3>
+            <br>
+            <p>Bu projede, LLM (Büyük Dil Modelleri) kullanarak veri analizi süreçlerini otomatize ettim. Seninle yaptığımız gibi, karmaşık verileri anlamlı içgörülere dönüştüren bir sistem tasarladım.</p>
+        </div>
+    </div>
 
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal2')">&times;</span>
+            <h3 style="color: var(--accent-color);">Arayüz Tasarımı Detayları</h3>
+            <br>
+            <p>Responsive tasarım ve modern CSS kütüphaneleri kullanarak, her cihazda akıcı çalışan görsel deneyimler oluşturmaya odaklanıyorum.</p>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+
+        function openModal(id) {
+            document.getElementById(id).style.display = "flex";
+            document.body.style.overflow = "hidden"; // Kaydırmayı engelle
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = "none";
+            document.body.style.overflow = "auto"; // Kaydırmayı aç
+        }
+
+        // Dışarı tıklandığında kapatma
+        window.onclick = function(event) {
+            if (event.target.className === 'modal') {
+                event.target.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        }
+    </script>
 </body>
 </html>
